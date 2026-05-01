@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aniversário do João — 30 anos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&amp;family=Lora:ital,wght@0,400..600;1,400..500&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracotta:#C8553D;
+    --terracotta-deep:#A83A26;
+    --clay:#7A2E1F;
+    --ochre:#D89F5C;
+    --sun:#E8B97A;
+    --cream:#F5E6D3;
+    --cream-2:#EFD9BD;
+    --ink:#3A1E14;
+    --olive:#6B5A3A;
+    --line:rgba(122,46,31,.22);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Lora', Georgia, serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 60% at 50% -10%, #F2C48A 0%, #EFB877 28%, #E89E5C 55%, #D67A48 80%, #B85432 100%);
+    min-height:100svh;
+    display:flex;
+    justify-content:center;
+    padding:18px 14px 40px;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* film grain */
+  body::before{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:5;
+    opacity:.18;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .card{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    background:var(--cream);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.5) inset,
+      0 30px 60px -20px rgba(74,22,8,.45),
+      0 8px 20px -8px rgba(74,22,8,.35);
+    isolation:isolate;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:34px 26px 30px;
+    background:var(--cream);
+    color:var(--cream);
+    overflow:hidden;
+    text-align:center;
+  }
+  .sun-stage{
+    position:relative;
+    width:300px;
+    max-width:100%;
+    aspect-ratio:740 / 706;
+    margin:0 auto;
+  }
+  .sun-art{
+    display:block;
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    z-index:0;
+  }
+  .hero-inner{position:relative;z-index:1}
+
+  .save-banner{
+    background:var(--clay);
+    padding:22px 26px 20px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .save-label{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    letter-spacing:.38em;
+    text-transform:uppercase;
+    font-size:10px;
+    color:rgba(251,230,200,.65);
+    margin:0 0 6px;
+  }
+  .save-date{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 60,"SOFT" 30,"wght" 700;
+    font-size:46px;
+    letter-spacing:-.02em;
+    color:#FFF3DD;
+    text-shadow:0 2px 6px rgba(0,0,0,.25);
+    margin:0;
+    line-height:1;
+  }
+
+  h1.title{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    width:65%;
+    max-width:190px;
+    margin:0;
+    color:#FFF3DD;
+    z-index:1;
+    text-align:center;
+  }
+  h1.title .num{
+    display:block;
+    width:100%;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 144, "SOFT" 30, "wght" 600;
+    font-weight:600;
+    font-size:80px;
+    line-height:.76;
+    letter-spacing:-.06em;
+    text-align:center;
+    color:#7A2E1F;
+    margin:0;
+    text-shadow:0 2px 0 rgba(122,46,31,.18);
+  }
+  h1.title em{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-variation-settings:"opsz" 14, "SOFT" 100, "wght" 400;
+    font-size:10px;
+    line-height:1;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:#1F120C;
+    margin:0;
+    padding-left:.34em;
+  }
+  .subtitle{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24, "SOFT" 60;
+    font-weight:500;
+    font-size:25px;
+    color:#5A2110;
+    margin:30px 0 0;
+    letter-spacing:-.01em;
+    text-transform:lowercase;
+  }
+  .subtitle .age{
+    display:inline;
+    font-style:normal;
+    color:inherit;
+    background:none;
+    padding:0;
+    border-radius:0;
+    margin:0 2px;
+    font-variation-settings:"opsz" 24,"SOFT" 60,"wght" 500;
+  }
+  .signature{
+    display:block;
+    max-width:130px;
+    height:auto;
+    margin:50px auto 8px;
+  }
+
+  /* divider */
+  .scallop{
+    position:relative;
+    height:18px;
+    background:var(--cream);
+    margin-top:-2px;
+  }
+  .scallop::before{
+    content:none;
+  }
+
+  /* BODY */
+  .body{
+    padding:22px 26px 8px;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  .host{
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:10.5px;
+    color:var(--clay);
+    margin:0 0 4px;
+  }
+  .venue{
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 60,"SOFT" 50,"wght" 500;
+    font-size:26px;
+    color:var(--terracotta-deep);
+    margin:0 0 18px;
+    letter-spacing:-.01em;
+  }
+  .venue em{font-style:italic;color:var(--clay)}
+
+  .row{
+    display:grid;
+    grid-template-columns:46px 1fr;
+    gap:14px;
+    align-items:start;
+    padding:16px 4px;
+    border-top:1px solid var(--line);
+  }
+  .row:last-of-type{border-bottom:1px solid var(--line)}
+  .ico{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--cream-2);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--terracotta-deep);
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 50,"wght" 600;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    flex-shrink:0;
+    border:1px solid var(--line);
+  }
+  .label{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    font-size:10.5px;
+    color:var(--olive);
+    margin:0 0 4px;
+  }
+  .value{
+    font-family:'Lora',serif;
+    font-size:15.5px;
+    line-height:1.45;
+    color:var(--ink);
+    margin:0;
+  }
+  .value strong{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24,"SOFT" 60,"wght" 500;
+    font-weight:500;
+    font-size:18px;
+    color:var(--terracotta-deep);
+    letter-spacing:-.005em;
+  }
+  .value .accent{
+    color:var(--terracotta);
+    font-style:italic;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24,"SOFT" 100,"wght" 450;
+  }
+
+  /* fee table */
+  .fees{
+    margin-top:6px;
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .fee{
+    background:#FFF6E6;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    text-align:left;
+  }
+  .fee.free{
+    background:linear-gradient(180deg,#F8D9A6,#F0BD7B);
+    border-color:rgba(122,46,31,.3);
+  }
+  .fee .when{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    text-transform:uppercase;letter-spacing:.18em;
+    font-size:9.5px;color:var(--clay);
+    margin-bottom:2px;
+  }
+  .fee .price{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 60,"SOFT" 50,"wght" 500;
+    font-size:22px;color:var(--terracotta-deep);
+    line-height:1;
+  }
+  .fee.free .price{color:#5A2110}
+  .fee .price em{font-style:italic;font-variation-settings:"opsz" 60,"SOFT" 100,"wght" 450}
+
+  /* CTA */
+  .actions{
+    padding:14px 22px 22px;
+    display:grid;
+    gap:10px;
+    background:var(--cream);
+  }
+  .btn{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:10px;
+    padding:14px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24,"SOFT" 60,"wght" 500;
+    font-size:15px;
+    letter-spacing:.01em;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{
+    background:var(--terracotta-deep);
+    color:#FFE9C9;
+    box-shadow:0 4px 0 #5A2110, 0 8px 20px -8px rgba(122,46,31,.5);
+  }
+  .btn.secondary{
+    background:#FFF6E6;
+    color:var(--terracotta-deep);
+    border:1px solid var(--line);
+  }
+  .btn .arrow{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-variation-settings:"opsz" 24,"SOFT" 100;
+    opacity:.85;
+  }
+  .btn small{
+    display:block;font-family:'Lora',serif;font-style:italic;font-weight:400;
+    font-size:11.5px;letter-spacing:0;
+    opacity:.7;margin-top:2px;
+  }
+  .btn.primary small{color:#FBE6C8}
+
+  /* Footer */
+  .foot{
+    text-align:center;
+    padding:18px 24px 26px;
+    background:var(--cream);
+    border-top:1px dashed var(--line);
+  }
+  .foot p{
+    margin:0;
+    font-family:'Fraunces',serif;font-style:italic;
+    font-variation-settings:"opsz" 14,"SOFT" 100,"wght" 350;
+    font-size:13px;color:var(--clay);
+    line-height:1.45;
+  }
+  .foot p + p{
+    margin-top:8px;
+    font-family:'Fraunces',serif;font-style:normal;
+    font-variation-settings:"opsz" 14,"SOFT" 50,"wght" 500;
+    text-transform:uppercase;letter-spacing:.32em;
+    font-size:10px;color:var(--olive);
+  }
+
+  /* Tiny ornaments */
+  .orn{
+    text-align:center;
+    font-family:'Fraunces',serif;font-style:italic;
+    font-variation-settings:"opsz" 60,"SOFT" 100;
+    color:var(--terracotta);
+    font-size:18px;
+    letter-spacing:.4em;
+    margin:6px 0 4px;
+    opacity:.9;
+  }
+
+  @media (min-width:480px){
+    body{padding:36px 16px}
+  }
+</style>
+</head>
+<body>
+  <article class="card" data-screen-label="01 Invite">
+    <div class="save-banner">
+      <p class="save-label">Reserve a data</p>
+      <p class="save-date">23 de maio</p>
+    </div>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="sun-stage">
+          <img class="sun-art" src="sun.png" alt="" aria-hidden="true">
+          <h1 class="title"><em>trinta</em><span class="num">30</span></h1>
+        </div>
+        <p class="subtitle">voltas <span class="age">ao&nbsp;sol</span> com</p>
+        <img class="signature" src="Assinatura%20Digitalizada%20-%20Joa%CC%83o%20Victor%20Dalla%20Pola%20-%2008-2020.png" alt="João">
+      </div>
+    </header>
+
+    <div class="scallop" aria-hidden="true"></div>
+
+    <!-- BODY -->
+    <section class="body">
+      <p class="host">Você está convidado para</p>
+      <h2 class="venue">Brass Brew <em>Cervejaria</em></h2>
+
+      <div class="row">
+        <div class="ico">23<br>MAI</div>
+        <div>
+          <p class="label">Quando</p>
+          <p class="value"><strong>Sábado, 23 de maio</strong><br>
+          a partir das <span class="accent">14h</span></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="ico">R$</div>
+        <div>
+          <p class="label">Entrada</p>
+          <div class="fees">
+            <div class="fee free">
+              <div class="when">até 14h</div>
+              <div class="price">Grátis</div>
+            </div>
+            <div class="fee">
+              <div class="when">15h — 18h</div>
+              <div class="price">R$ 40</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="ico">📍</div>
+        <div>
+          <p class="label">Onde</p>
+          <p class="value"><strong>Av. Mário de Andrade, 1820</strong><br>
+          Caldeiras</p>
+        </div>
+      </div>
+
+      <p class="orn">· · ·</p>
+    </section>
+
+    <!-- ACTIONS -->
+    <section class="actions">
+      <a class="btn primary" href="https://www.dguests.com.br/cardapio/brassbrew" target="_blank" rel="noopener">
+        <span>Ver o cardápio<small>chopes, petiscos &amp; cia.</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="btn secondary" href="https://www.instagram.com/brassbrew/?hl=en" target="_blank" rel="noopener">
+        <span>@brassbrew no Instagram<small>fotos da casa</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+M%C3%A1rio+de+Andrade+1820+Caldeiras" target="_blank" rel="noopener">
+        <span>Abrir no mapa<small>Av. Mário de Andrade, 1820</small></span>
+        <span class="arrow">↗</span>
+      </a>
+    </section>
+
+    <footer class="foot">
+
+    </footer>
+  </article>
+</body>
+</html>
