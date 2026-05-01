@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teaser — Aniversário do João</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&family=Lora:ital,wght@0,400..600;1,400..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracotta:#C8553D;
+    --terracotta-deep:#A83A26;
+    --clay:#7A2E1F;
+    --cream:#F5E6D3;
+    --cream-2:#EFD9BD;
+    --ink:#3A1E14;
+    --line:rgba(122,46,31,.2);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%}
+  body{
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    font-family:'Lora', Georgia, serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 85% at 18% 12%, rgba(248,212,151,.95) 0%, rgba(238,174,102,.9) 32%, rgba(202,91,55,.9) 67%, rgba(122,46,31,.94) 100%);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.16;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .teaser{
+    position:relative;
+    width:1200px;
+    height:675px;
+    overflow:hidden;
+    background:var(--cream);
+    box-shadow:0 34px 70px -28px rgba(58,30,20,.7);
+    isolation:isolate;
+  }
+  .teaser::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(90deg, var(--clay) 0 34%, transparent 34%),
+      linear-gradient(180deg, rgba(255,246,230,.52), rgba(255,246,230,0));
+    z-index:-2;
+  }
+  .teaser::after{
+    content:"";
+    position:absolute;
+    inset:28px;
+    border:1px solid rgba(122,46,31,.17);
+    pointer-events:none;
+  }
+  .date-block{
+    position:absolute;
+    top:58px;
+    left:64px;
+    width:300px;
+    color:#FFF3DD;
+    text-align:center;
+  }
+  .save-label{
+    margin:0 0 12px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    font-size:13px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:rgba(251,230,200,.72);
+  }
+  .save-date{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 72,"SOFT" 30,"wght" 700;
+    font-size:68px;
+    line-height:.94;
+    letter-spacing:-.035em;
+    text-shadow:0 3px 8px rgba(0,0,0,.22);
+  }
+  .mini-details{
+    position:absolute;
+    left:72px;
+    bottom:70px;
+    width:280px;
+    color:#FFE9C9;
+    display:grid;
+    gap:18px;
+  }
+  .detail{
+    padding-top:17px;
+    border-top:1px solid rgba(255,233,201,.2);
+  }
+  .detail-label{
+    margin:0 0 6px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:rgba(255,233,201,.62);
+  }
+  .detail-value{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24,"SOFT" 50,"wght" 500;
+    font-size:25px;
+    line-height:1.15;
+  }
+  .sun-stage{
+    position:absolute;
+    left:415px;
+    top:56px;
+    width:426px;
+    aspect-ratio:740 / 706;
+  }
+  .sun-art{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .sun-title{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    gap:12px;
+    text-align:center;
+  }
+  .sun-title em{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-variation-settings:"opsz" 14, "SOFT" 100, "wght" 400;
+    font-size:14px;
+    line-height:1;
+    letter-spacing:.36em;
+    text-transform:uppercase;
+    color:#1F120C;
+    padding-left:.36em;
+  }
+  .sun-title .num{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 144, "SOFT" 30, "wght" 600;
+    font-weight:600;
+    font-size:112px;
+    line-height:.75;
+    letter-spacing:-.06em;
+    color:var(--clay);
+    text-shadow:0 2px 0 rgba(122,46,31,.18);
+  }
+  .copy{
+    position:absolute;
+    right:74px;
+    top:92px;
+    width:332px;
+    text-align:left;
+  }
+  .copy h1{
+    margin:0 0 20px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 60,"SOFT" 50,"wght" 500;
+    font-size:54px;
+    line-height:.98;
+    letter-spacing:-.025em;
+    color:var(--clay);
+  }
+  .copy h1 em{
+    display:block;
+    font-style:italic;
+    color:var(--terracotta-deep);
+  }
+  .signature{
+    display:block;
+    width:126px;
+    height:auto;
+    margin:0 0 30px 4px;
+  }
+  .venue-label{
+    margin:0 0 6px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--clay);
+  }
+  .venue{
+    margin:0 0 24px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 48,"SOFT" 50,"wght" 500;
+    font-size:34px;
+    line-height:1.04;
+    color:var(--terracotta-deep);
+    letter-spacing:-.015em;
+  }
+  .venue em{font-style:italic;color:var(--clay)}
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    min-width:286px;
+    gap:22px;
+    padding:18px 22px;
+    background:var(--terracotta-deep);
+    color:#FFE9C9;
+    border-radius:12px;
+    box-shadow:0 5px 0 #5A2110, 0 12px 24px -12px rgba(122,46,31,.75);
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 24,"SOFT" 60,"wght" 500;
+    font-size:20px;
+  }
+  .cta span:last-child{
+    font-style:italic;
+    opacity:.86;
+  }
+  .orn{
+    position:absolute;
+    left:509px;
+    bottom:72px;
+    width:240px;
+    text-align:center;
+    color:var(--terracotta);
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-variation-settings:"opsz" 60,"SOFT" 100;
+    font-size:22px;
+    letter-spacing:.45em;
+  }
+</style>
+</head>
+<body>
+  <main class="teaser" aria-label="Teaser do convite de aniversário do João">
+    <section class="date-block">
+      <p class="save-label">Reserve a data</p>
+      <p class="save-date">23 de maio</p>
+    </section>
+
+    <section class="mini-details">
+      <div class="detail">
+        <p class="detail-label">Quando</p>
+        <p class="detail-value">sábado, 14h</p>
+      </div>
+      <div class="detail">
+        <p class="detail-label">Onde</p>
+        <p class="detail-value">Brass Brew</p>
+      </div>
+    </section>
+
+    <div class="sun-stage">
+      <img class="sun-art" src="sun.png" alt="" aria-hidden="true">
+      <h2 class="sun-title"><em>trinta</em><span class="num">30</span></h2>
+    </div>
+
+    <section class="copy">
+      <h1>voltas ao sol <em>com</em></h1>
+      <img class="signature" src="Assinatura%20Digitalizada%20-%20Joa%CC%83o%20Victor%20Dalla%20Pola%20-%2008-2020.png" alt="João">
+      <p class="venue-label">Você está convidado para</p>
+      <p class="venue">Brass Brew <em>Cervejaria</em></p>
+      <div class="cta"><span>Abrir convite</span><span>↗</span></div>
+    </section>
+
+    <div class="orn">· · ·</div>
+  </main>
+</body>
+</html>
