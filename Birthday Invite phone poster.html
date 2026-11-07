@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poster — Aniversário do João</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,30..100&family=Lora:ital,wght@0,400..600;1,400..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracotta:#C8553D;
+    --terracotta-deep:#A83A26;
+    --clay:#7A2E1F;
+    --cream:#F5E6D3;
+    --cream-2:#EFD9BD;
+    --ink:#3A1E14;
+    --olive:#6B5A3A;
+    --line:rgba(122,46,31,.22);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%}
+  body{
+    display:grid;
+    place-items:center;
+    font-family:'Lora', Georgia, serif;
+    color:var(--ink);
+    background:#F1B06F;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .poster{
+    position:relative;
+    width:1080px;
+    height:1920px;
+    overflow:hidden;
+    background:
+      radial-gradient(880px 620px at 50% 390px, rgba(255,246,230,.94), rgba(245,230,211,.98) 58%, #EFD9BD 100%);
+    isolation:isolate;
+  }
+  .poster::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:8;
+    opacity:.16;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .top-band{
+    position:absolute;
+    inset:0 0 auto;
+    height:328px;
+    background:var(--clay);
+    color:#FFF3DD;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.08) inset;
+  }
+  .save-label{
+    margin:0 0 18px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-size:27px;
+    color:rgba(251,230,200,.68);
+  }
+  .save-date{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 92,"SOFT" 30,"wght" 700;
+    font-size:128px;
+    line-height:.92;
+    letter-spacing:-.035em;
+    text-shadow:0 5px 14px rgba(0,0,0,.22);
+  }
+  .sun-stage{
+    position:absolute;
+    top:390px;
+    left:50%;
+    width:650px;
+    aspect-ratio:740 / 706;
+    transform:translateX(-50%);
+  }
+  .sun-art{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .sun-title{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    gap:18px;
+    text-align:center;
+  }
+  .sun-title em{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-variation-settings:"opsz" 14,"SOFT" 100,"wght" 400;
+    font-size:23px;
+    line-height:1;
+    letter-spacing:.36em;
+    text-transform:uppercase;
+    color:#1F120C;
+    padding-left:.36em;
+  }
+  .sun-title .num{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 144,"SOFT" 30,"wght" 600;
+    font-weight:600;
+    font-size:178px;
+    line-height:.74;
+    letter-spacing:-.06em;
+    color:var(--clay);
+    text-shadow:0 4px 0 rgba(122,46,31,.18);
+  }
+  .headline{
+    position:absolute;
+    top:1010px;
+    left:90px;
+    right:90px;
+    text-align:center;
+  }
+  .subtitle{
+    margin:0 0 28px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 44,"SOFT" 60,"wght" 500;
+    font-size:70px;
+    line-height:.98;
+    color:#5A2110;
+    letter-spacing:-.015em;
+    text-transform:lowercase;
+  }
+  .signature{
+    display:block;
+    width:214px;
+    height:auto;
+    margin:0 auto;
+  }
+  .invite{
+    position:absolute;
+    left:80px;
+    right:80px;
+    bottom:76px;
+    padding:46px 54px 48px;
+    background:rgba(255,246,230,.72);
+    border:1px solid var(--line);
+    border-radius:28px;
+  }
+  .host{
+    margin:0 0 11px;
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    font-size:25px;
+    color:var(--clay);
+  }
+  .venue{
+    margin:0 0 32px;
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 72,"SOFT" 50,"wght" 500;
+    font-size:60px;
+    line-height:1.02;
+    letter-spacing:-.018em;
+    color:var(--terracotta-deep);
+  }
+  .venue em{font-style:italic;color:var(--clay)}
+  .details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .detail{
+    min-height:142px;
+    padding:22px 26px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(255,246,230,.7);
+  }
+  .detail.wide{
+    grid-column:1 / -1;
+    min-height:auto;
+  }
+  .label{
+    margin:0 0 10px;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 14,"SOFT" 80;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:18px;
+    color:var(--olive);
+  }
+  .value{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 32,"SOFT" 60,"wght" 500;
+    font-size:34px;
+    line-height:1.16;
+    letter-spacing:-.004em;
+    color:var(--ink);
+  }
+  .accent{color:var(--terracotta-deep)}
+  .small{
+    display:block;
+    margin-top:7px;
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:25px;
+    line-height:1.2;
+    color:var(--clay);
+  }
+  .orn{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:642px;
+    text-align:center;
+    color:var(--terracotta);
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-variation-settings:"opsz" 60,"SOFT" 100;
+    font-size:32px;
+    letter-spacing:.5em;
+    padding-left:.5em;
+  }
+</style>
+</head>
+<body>
+  <main class="poster" aria-label="Poster do convite de aniversário do João">
+    <section class="top-band">
+      <div>
+        <p class="save-label">Reserve a data</p>
+        <p class="save-date">23 de maio</p>
+      </div>
+    </section>
+
+    <div class="sun-stage">
+      <img class="sun-art" src="sun.png" alt="" aria-hidden="true">
+      <h1 class="sun-title"><em>trinta</em><span class="num">30</span></h1>
+    </div>
+
+    <section class="headline">
+      <p class="subtitle">voltas ao sol com</p>
+      <img class="signature" src="signature.png" alt="João">
+    </section>
+
+    <div class="orn">· · ·</div>
+
+    <section class="invite">
+      <p class="host">Você está convidado para</p>
+      <p class="venue">Brass Brew <em>Cervejaria</em></p>
+
+      <div class="details">
+        <div class="detail">
+          <p class="label">Quando</p>
+          <p class="value"><span class="accent">Sábado</span><span class="small">a partir das 14h</span></p>
+        </div>
+        <div class="detail">
+          <p class="label">Entrada</p>
+          <p class="value"><span class="accent">Grátis</span><span class="small">até 15h</span></p>
+        </div>
+        <div class="detail wide">
+          <p class="label">Onde</p>
+          <p class="value"><span class="accent">Av. Mário de Andrade, 1820</span><span class="small">Caldeiras</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
